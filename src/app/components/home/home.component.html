@@ -1,0 +1,58 @@
+<!-- Navbar -->
+  <div class="background">
+  <!-- Cards Section -->
+  <div class="container my-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Total Users</h5>
+            <p class="card-text display-6">{{dashboardData.totalEmployee}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-success">Active Users</h5>
+            <p class="card-text display-6">{{dashboardData.totalProject}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title text-warning">Active Email Ids</h5>
+            <p class="card-text display-6">{{dashboardData.totalEmployee}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Table Section -->
+  <div class="container my-4">
+    <div class="table-responsive">
+        <div class="container" style="margin-top: 11px;">
+            <table class="table table-bordered table-hover table-striped table-sm shadow-sm rounded caption-top">
+                <caption class="fw-bold text-primary">List of Users</caption>
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let itm of items" class="align-middle">
+                        <td>{{ itm.id }}</td>
+                        <td>{{ itm.fullName }}</td>
+                        <td>{{ itm.email }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+  </div>
+  

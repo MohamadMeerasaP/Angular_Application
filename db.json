@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "fullName": "dfsdf",
+      "email": "fsdf@sfdfg.fgdf",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "fullName": "Test User",
+      "email": "haseenakhader.uk@gmail.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "fullName": "Test User",
+      "email": "haseenakhader.uk@gmail.com",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "fullName": "Test User",
+      "email": "haseenakhader.uk@gmail.com",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "fullName": "MohamadMeerasa",
+      "email": "mohamadmeerasa45@gmail.com",
+      "password": "123",
+      "id": 5
+    }
+  ],
+  "data" : [
+    {
+      "totalUsers" : "5",
+      "activeUsers" : "4",
+      "activeEmail" : "4"
+    }
+  ]
+}

@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+/* Adding a shadow effect to the table */
+.table {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Alternate row striping */
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect on rows */
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Make table headers more prominent */
+.table thead {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Adjust table caption styling */
+.caption-top {
+  font-size: 1.25rem;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Style table cells for better padding */
+.table td, .table th {
+  padding: 1rem;
+}
+
+/* Add rounded corners to the table */
+.table-rounded {
+  border-radius: 8px;
+}
+
+/* Responsive table styling */
+@media (max-width: 767px) {
+  .table {
+    font-size: 0.9rem;
+  }
+}
+.background {
+  height: 100vh;
+  background-color: #e4e4e4;
+}
+.background-login {
+  background: linear-gradient(135deg, #4f93ff, #1c1e21);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  height: 100vh;
+}
+
+.form-control{
+  border: 1px solid !important;
+}
+.form-select {
+  border: 1px solid  !important;
+}
+
+
