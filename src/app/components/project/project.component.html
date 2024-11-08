@@ -1,42 +1,56 @@
 <div class="container">
 <div class="tab-pane fade show active" id="projects" role="tabpanel">
-    <div class="row">
-        <div class="col-6">
-            <h2>Projects</h2>
-        </div>
-        <div class="col-6 text-end">
-            <button class="btn btn-success" routerLink="/new-project/0">New Project</button>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>Projects</h2>
+                    </div>
+                    <div class="col-6 text-end">
+                        <button class="btn btn-success" routerLink="/new-project/0">New Project</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-striped table-bordered text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Project ID</th>
+                            <th>Project Name</th>
+                            <th>Client Name</th>
+                            <th>Start Date</th>
+                            <th>Lead By Employee</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of projectList; let i = index">
+                            <tr>
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ item.projectName }}</td>
+                                <td>{{ item.clientName }}</td>
+                                <td>{{ item.startDate | date: 'MM/dd/yyyy' }}</td>
+                                <td>{{ item.employeeName }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-primary me-2" (click)="onEdit(item.projectId)">
+                                        <i class="bi bi-pencil-square"></i> Edit
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(item.projectId)">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            
+            </div>
         </div>
     </div>
+    
 
     <!-- Project Table -->
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Project ID</th>
-                <th>Project Name</th>
-                <th>Client Name</th>
-                <th>Start Date</th>
-                <th>Lead By Employee</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of projectList; track $index){
-                <tr>
-                    <td>{{$index+1}}</td>
-                    <td>{{item.projectName}}</td>
-                    <td>{{item.clientName}}</td>
-                    <td>{{item.startDate}}</td>
-                    <td>{{item.leadByEmpId}}</td>
-                    <td>
-                    <button type="button" class="btn btn-primary mt-3 mr-2" (click)="onEdit(item.projectId)">Edit</button>
-                    <button type="button" class="btn btn-danger mt-3" (click)="onDelete(item.projectId)">Delete</button>
-                    </td>
-                </tr>
-            }
-            <!-- Data rows go here -->
-        </tbody>
-    </table>
-</div>
+    </div>
 </div>

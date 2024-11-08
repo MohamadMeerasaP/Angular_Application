@@ -3,11 +3,12 @@ import { Router, RouterLink } from '@angular/router';
 import { IProject } from '../../model/interface/master';
 import { MasterService } from '../../services/master.service';
 import { MessageService } from 'primeng/api';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,CommonModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })

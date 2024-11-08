@@ -1,41 +1,36 @@
 {
   "users": [
     {
-      "fullName": "dfsdf",
-      "email": "fsdf@sfdfg.fgdf",
+      "fullName": "Admin",
+      "email": "admin@admin.com",
       "password": "123",
-      "id": 1
+      "id": 6
     },
     {
-      "fullName": "Test User",
-      "email": "haseenakhader.uk@gmail.com",
+      "fullName": "Test User1",
+      "email": "testuser1@gmail.com",
       "password": "123",
       "id": 2
     },
     {
-      "fullName": "Test User",
-      "email": "haseenakhader.uk@gmail.com",
+      "fullName": "Test User2",
+      "email": "testuser2@gmail.com",
       "password": "123456",
       "id": 3
     },
     {
-      "fullName": "Test User",
-      "email": "haseenakhader.uk@gmail.com",
-      "password": "123",
-      "id": 4
-    },
-    {
-      "fullName": "MohamadMeerasa",
-      "email": "mohamadmeerasa45@gmail.com",
+      "fullName": "Mohamad Meerasa",
+      "email": "mohamad@gmail.com",
       "password": "123",
       "id": 5
     }
+    
   ],
-  "data" : [
+  "data": [
     {
-      "totalUsers" : "5",
-      "activeUsers" : "4",
-      "activeEmail" : "4"
+      "totalUsers": "5",
+      "activeUsers": "4",
+      "activeEmail": "4"
     }
   ]
 }

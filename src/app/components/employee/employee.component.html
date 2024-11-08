@@ -1,16 +1,20 @@
 <div class="container">
 <!-- Employees Tab -->
 <div class="tab-pane fade show active" id="employees" role="tabpanel">
-    <div class="row">
-        <div class="col-6">
-            <h2>Employees</h2>
-        </div>
-        <div class="col-6 text-end">
-            <button class="btn btn-success" (click)="isFormVisible.set(true)"> Add New Employee</button>
-        </div>
-    </div>
-
-    <!-- Employee Form -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>Employees</h2>
+                    </div>
+                    <div class="col-6 text-end">
+                        <button class="btn btn-success" (click)="isFormVisible.set(true)"> Add New Employee</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                    <!-- Employee Form -->
      @if(isFormVisible()){
         <form class="mb-4">
             <div class="row">
@@ -71,18 +75,17 @@
                 </div>
             </div>
             @if(this.employeeObj.employeeId == 0) {
-                <button type="button" class="btn btn-primary mt-3" (click)="onSave()">Save Employee</button>
+                <button type="button" class="btn btn-success mt-3" (click)="onSave()">Save Employee</button>
             } @else {
-                <button type="button" class="btn btn-primary mt-3" (click)="onUpdate()">Update Employee</button>
+                <button type="button" class="btn btn-warning mt-3" (click)="onUpdate()">Update Employee</button>
             }
-            <button class="btn btn-primary mt-3 ml-2" (click)="isFormVisible.set(false)">Close</button>
-
+            <button class="btn btn-primary mt-3 ml-2" (click)="onCancel()">Close</button>
         </form>    
      }
 
     <!-- Employee Table -->
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-hover table-striped table-bordered text-center align-middle">
+        <thead class="table-dark">
             <tr>
                 <th>Sr No</th>
                 <th>Name</th>
@@ -94,22 +97,30 @@
             </tr>
         </thead>
         <tbody>
-            @for (item of employeeList(); track $index) {
+            <ng-container *ngFor="let item of employeeList(); let i = index">
                 <tr>
-                    <td>{{$index+1}}</td>
-                    <td>{{item.employeeName}}</td>
-                    <td>{{item.contactNo}}</td>
-                    <td>{{item.emailId}}</td>
-                    <td>{{item.deptId}}</td>
-                    <td>{{item.role}}</td>
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.employeeName }}</td>
+                    <td>{{ item.contactNo }}</td>
+                    <td>{{ item.emailId }}</td>
+                    <td>{{ item.deptId }}</td>
+                    <td>{{ item.role }}</td>
                     <td>
-                    <button type="button" class="btn btn-primary mt-3 mr-2" (click)="onEdit(item)">Edit</button>
-                    <button type="button" class="btn btn-danger mt-3" (click)="onDelete(item.employeeId)">Delete</button>
+                        <button type="button" class="btn btn-sm btn-primary me-2" (click)="onEdit(item)">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(item.employeeId)">
+                            <i class="bi bi-trash"></i> Delete
+                        </button>
                     </td>
                 </tr>
-            }
-            <!-- Data rows go here -->
+            </ng-container>
         </tbody>
     </table>
-</div>
+
+            </div>
+        </div>
+    </div>
+    
+    </div>
 </div>

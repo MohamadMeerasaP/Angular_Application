@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Employee } from '../../model/class/Employee';
 import { MasterService } from '../../services/master.service';
@@ -19,6 +19,7 @@ export class ProjectFormComponent {
 
   projectForm : FormGroup = new FormGroup ({});
   private messageService = inject(MessageService);
+  private router = inject(Router);
 
   empList$ : Observable<Employee[]> = new Observable<[]>;
   masterSrv = inject(MasterService);
@@ -69,6 +70,7 @@ export class ProjectFormComponent {
         summary: 'Success',
         detail: 'Project Created Successfully',
       });
+      this.router.navigate(['project']);
       this.projectForm.reset();
     },
      error => {
@@ -89,6 +91,7 @@ export class ProjectFormComponent {
         detail: 'Project Updated Successfully',
       });
       this.projectForm.reset();
+      this.router.navigate(['project']);
     },
      error => {
       this.messageService.add({

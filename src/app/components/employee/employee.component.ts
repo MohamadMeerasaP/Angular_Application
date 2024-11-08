@@ -4,11 +4,12 @@ import { IApiResponse, IChildDept, IParentDept } from '../../model/interface/mas
 import { FormsModule } from '@angular/forms';
 import { Employee } from '../../model/class/Employee';
 import { MessageService } from 'primeng/api';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
 })
@@ -68,6 +69,12 @@ export class EmployeeComponent implements OnInit{
   onEdit(data : Employee) {
     this.employeeObj = data;
     this.isFormVisible.set(true);
+  }
+
+  onCancel() {
+    this.isFormVisible.set(false)
+    this.employeeObj = new Employee();
+
   }
 
   onUpdate() {

@@ -6,35 +6,38 @@
                         <h5>Project Employee List</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-hover table-striped table-bordered text-center align-middle">
+                            <thead class="table-dark">
                                 <tr>
                                     <th>Emp Project ID</th>
                                     <th>Project ID</th>
-                                    <th>Employee ID</th>
+                                    <th>Employee Name</th>
                                     <th>Assigned Date</th>
                                     <th>Role</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @for (item of projectEmployeeList(); track $index) {
+                                <ng-container *ngFor="let item of projectEmployeeList(); let i = index">
                                     <tr>
-                                        <td>{{$index+1}}</td>
-                                        <td>{{item.projectId}}</td>
-                                        <td>{{item.empId}}</td>
-                                        <td>{{item.assignedDate}}</td>
-                                        <td>{{item.role}}</td>
+                                        <td>{{ i + 1 }}</td>
+                                        <td>{{ item.projectName }}</td>
+                                        <td>{{ item.employeeName }}</td>
+                                        <td>{{ item.assignedDate | date: 'MM/dd/yyyy' }}</td>
+                                        <td>{{ item.role }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary mt-3 mr-2">Edit</button>
-                                            <button type="button" class="btn btn-danger mt-3 mr-2">Delete</button>
+                                            <button type="button" class="btn btn-sm btn-primary me-2" (click)="onEdit(item)">
+                                                <i class="bi bi-pencil-square"></i> Edit
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(item.empProjectId)">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </button>
                                         </td>
                                     </tr>
-                                }
-                                <!-- Data rows go here -->
+                                </ng-container>
                             </tbody>
-                        </table>    
-        
+                        </table>
+                                
                     </div>
                 </div>
             </div>
@@ -50,18 +53,18 @@
                                     <label for="projectId" class="form-label">Project ID</label>
                                     <select class="form-select" formControlName="projectId">
                                         <option [value]="">Select Project</option>
-                                        @for (item of projectList$ | async; track $index){
+                                        <ng-container *ngFor="let item of projectList$ | async; let i = index">
                                             <option [value]="item.projectId">{{item.projectName}}</option>
-                                        }
+                                        </ng-container>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="empId" class="form-label">Employee ID</label>
                                     <select class="form-select" formControlName="empId">
                                         <option [value]="">Select Employee</option>
-                                        @for (item of empList$ | async; track $index){
+                                        <ng-container *ngFor="let item of empList$ | async; let i = index">
                                             <option [value]="item.employeeId">{{item.employeeName}}</option>
-                                        }
+                                        </ng-container>
                                     </select>
                                 </div>
                             </div>
@@ -79,9 +82,14 @@
                                     <input type="checkbox" formControlName="isActive" id="isActive">
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary mt-3" (click)="onSave()">Submit</button>
+                        
+                            <!-- Use *ngIf for conditional rendering -->
+                            <button type="button" class="btn btn-success mt-3" *ngIf="form.get('empProjectId')?.value === 0" (click)="onSave()">Submit</button>
+                            <button type="button" class="btn btn-warning mt-3" *ngIf="form.get('empProjectId')?.value !== 0" (click)="onUpdateProjectEmp()">Update</button>
+                            <button type="button" class="btn btn-primary mt-3 ml-2" *ngIf="form.get('empProjectId')?.value !== 0" (click)="onCancel()">Cancel</button>
+
                         </form>
-        
+                                
                     </div>
                 </div>
             </div>

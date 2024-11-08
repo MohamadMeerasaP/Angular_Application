@@ -59,4 +59,7 @@ export class MasterService {
   getDashboardValue() : Observable<DashboardData[]> {
     return this.http.get<DashboardData[]>( this.apiUrl + "GetDashboard")
   }
+  deleteProjectEmpById(id: number) : Observable<IProjectEmployee> {
+    return this.http.delete<IProjectEmployee>( this.apiUrl + "DeleteProjectEmployee/"+ id)
+  }
 }

@@ -17,6 +17,7 @@ export interface IChildDept {
 }
 
 export interface IProject {
+    employeeName : string;
     projectId : number;
     projectName : string;
     clientName : string;
@@ -28,6 +29,8 @@ export interface IProject {
 }
 
 export interface IProjectEmployee {
+    employeeName : string;
+    projectName : string;
     empProjectId : number;
     projectId : number;
     empId : number;

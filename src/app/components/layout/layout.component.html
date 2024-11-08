@@ -1,5 +1,5 @@
 <div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="/">Meerasa Angular Dashboard</a>
       <button
@@ -28,11 +28,12 @@
             <a class="nav-link" routerLink="/project-employee">Project Employee</a>
           </li>
         </ul>
-        <button class="btn btn-outline-light" (click)="logout()">Sign Out</button>
+        <h6 class="mt-1">Welcome</h6>&nbsp;&nbsp;<h4>{{loggedInUserName || 'User'}}!</h4>
+        <button class="btn btn-outline-light ml-2" (click)="logout()">Sign Out</button>
       </div>
     </div>
   </nav>
-  </div>
- <div>
-    <router-outlet></router-outlet>
- </div>  
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
