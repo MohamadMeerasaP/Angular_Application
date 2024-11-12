@@ -11,6 +11,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { ProjectComponent } from './components/project/project.component';
 import { ProjectEmployeeComponent } from './components/project-employee/project-employee.component';
 import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { DeparmentTableComponent } from './components/deparment-table/deparment-table.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,6 +39,10 @@ export const routes: Routes = [
       {
         path:'project-employee',
         component:ProjectEmployeeComponent
+      },
+      {
+        path:'department',
+        component:DeparmentTableComponent
       },
     ]
   }

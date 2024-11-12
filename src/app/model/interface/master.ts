@@ -38,3 +38,10 @@ export interface IProjectEmployee {
     role: string;
     isActive: string;
 }
+
+export interface Department {
+    departmentId : number,
+    departmentName: string,
+    departmentLogo: string,
+    isEdit :boolean
+  }

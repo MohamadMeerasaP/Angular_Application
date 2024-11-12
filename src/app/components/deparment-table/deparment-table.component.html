@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <h5>Department List</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 text-end">
+                        <button class="btn btn-success" (click)="addNew()">Add New</button>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-striped table-bordered text-center align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Sr No</th>
+                                <th>Department Name</th>
+                                <th>Department Logo Url</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of departmentList; let i = index">
+                                <td>{{ i + 1 }}</td>
+
+                                <td>
+                                    <div *ngIf="item.isEdit">
+                                        <input type="text" [(ngModel)]="item.departmentName" class="form-control" />
+                                    </div>
+                                    <div *ngIf="!item.isEdit">
+                                        {{item.departmentName}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div *ngIf="item.isEdit">
+                                        <input type="text" [(ngModel)]="item.departmentLogo" class="form-control" />
+                                    </div>
+                                    <div *ngIf="!item.isEdit">
+                                        {{item.departmentLogo}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div *ngIf="item.isEdit">
+                                        <button type="button" class="btn btn-sm btn-success me-2" *ngIf="item.departmentId !==0" (click)="onUpdate(item)">
+                                            <i class="bi bi-pencil-square"></i> Update
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-success me-2" *ngIf="item.departmentId ==0" (click)="onNewCreate(item)">
+                                            <i class="bi bi-pencil-square"></i> Save
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-secondary" (click)="onCancel(item)">
+                                            <i class="bi bi-trash"></i> Cancel
+                                        </button>
+                                    </div>
+                                    <div *ngIf="!item.isEdit">
+                                        <button type="button" class="btn btn-sm btn-primary me-2" (click)="onEdit(item)">
+                                            <i class="bi bi-pencil-square"></i> Edit
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(item.departmentId)">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

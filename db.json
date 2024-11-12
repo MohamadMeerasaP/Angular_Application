@@ -23,8 +23,13 @@
       "email": "mohamad@gmail.com",
       "password": "123",
       "id": 5
+    },
+    {
+      "fullName": "admin45",
+      "email": "admin45@gmail.com",
+      "password": "123",
+      "id": 7
     }
-    
   ],
   "data": [
     {
