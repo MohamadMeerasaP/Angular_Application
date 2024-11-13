@@ -98,7 +98,7 @@ export class DeparmentTableComponent implements OnInit {
             summary: 'Success',
             detail: 'Department deleted successfully',
           });
-          this.getAllDepartments(); // Refreshes the list after deletion
+          this.getAllDepartments();
         },
         error => {
           this.messageService.add({
@@ -110,6 +110,5 @@ export class DeparmentTableComponent implements OnInit {
       );
     }
   }
-  
 }
 
