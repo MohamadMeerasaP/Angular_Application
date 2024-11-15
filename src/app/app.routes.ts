@@ -13,6 +13,7 @@ import { ProjectEmployeeComponent } from './components/project-employee/project-
 import { ProjectFormComponent } from './components/project-form/project-form.component';
 import { DeparmentTableComponent } from './components/deparment-table/deparment-table.component';
 import { BulkDeparmentTableComponent } from './components/bulk-deparment-table/bulk-deparment-table.component';
+import { ProductsComponent } from './components/products/products.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -48,6 +49,10 @@ export const routes: Routes = [
       {
         path:'bulk-department',
         component:BulkDeparmentTableComponent
+      },
+      {
+        path:'products',
+        component:ProductsComponent
       },
     ]
   }

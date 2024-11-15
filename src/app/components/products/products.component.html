@@ -1,0 +1,136 @@
+<div class="container mt-4">
+    <div class="card shadow-sm border-0 rounded-3">
+      <div class="card-header bg-warning rounded-top">
+        <h5>Server Side Sorting and Pagination</h5>
+      </div>
+      <div class="card-body">
+        <div class="row g-3 mb-3">
+          <div class="col-md-3">
+            <label for="category" class="form-label fw-semibold">Category</label>
+            <input type="text" placeholder="Search By Category" [(ngModel)]="categoryName" class="form-control" />
+          </div>
+          <div class="col-md-3">
+            <label for="productName" class="form-label fw-semibold">Product Name</label>
+            <input type="text" placeholder="Search By Product" [(ngModel)]="productName" class="form-control" />
+          </div>
+          <div class="col-md-3">
+            <label for="productId" class="form-label fw-semibold">Product Id</label>
+            <input type="text" placeholder="Search By Id" [(ngModel)]="productId" class="form-control" />
+          </div>
+          <div class="col-md-3 d-flex align-items-end">
+            <button type="button" (click)="onSearch()" class="btn btn-primary me-2 w-50">Search</button>
+            <button type="button" (click)="onSearch()" class="btn btn-secondary w-50">Reset</button>
+          </div>
+        </div>
+  
+        <div class="table-responsive">
+            <table class="table table-striped" style="table-layout: fixed; width: 100%;">
+                <thead class="table-dark">
+                  <tr>
+                    <th (click)="onSort('productId')">
+                      <div class="d-flex justify-content-between align-items-center">
+                        Product Id
+                        <i
+                          *ngIf="sortBy === 'productId'"
+                          [ngClass]="{
+                            'bi bi-arrow-down': sortOrder === 'desc',
+                            'bi bi-arrow-up': sortOrder === 'asc'
+                          }"
+                        ></i>
+                      </div>
+                    </th>
+                    <th (click)="onSort('productName')">
+                      <div class="d-flex justify-content-between align-items-center">
+                        Product Name
+                        <i
+                          *ngIf="sortBy === 'productName'"
+                          [ngClass]="{
+                            'bi bi-arrow-down': sortOrder === 'desc',
+                            'bi bi-arrow-up': sortOrder === 'asc'
+                          }"
+                        ></i>
+                      </div>
+                    </th>
+                    <th (click)="onSort('shortName')">
+                      <div class="d-flex justify-content-between align-items-center">
+                        Short Name
+                        <i
+                          *ngIf="sortBy === 'shortName'"
+                          [ngClass]="{
+                            'bi bi-arrow-down': sortOrder === 'desc',
+                            'bi bi-arrow-up': sortOrder === 'asc'
+                          }"
+                        ></i>
+                      </div>
+                    </th>
+                    <th (click)="onSort('category')">
+                      <div class="d-flex justify-content-between align-items-center">
+                        Category
+                        <i
+                          *ngIf="sortBy === 'category'"
+                          [ngClass]="{
+                            'bi bi-arrow-down': sortOrder === 'desc',
+                            'bi bi-arrow-up': sortOrder === 'asc'
+                          }"
+                        ></i>
+                      </div>
+                    </th>
+                    <th (click)="onSort('price')">
+                      <div class="d-flex justify-content-between align-items-center">
+                        Price
+                        <i
+                          *ngIf="sortBy === 'price'"
+                          [ngClass]="{
+                            'bi bi-arrow-down': sortOrder === 'desc',
+                            'bi bi-arrow-up': sortOrder === 'asc'
+                          }"
+                        ></i>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of productList">
+                    <td>{{ product.productId }}</td>
+                    <td>{{ product.productName }}</td>
+                    <td>{{ product.shortName }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.price | currency }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+  
+        <div class="row align-items-center">
+          <div class="col-md-11 text-end">
+            <nav>
+              <ul class="pagination mb-0">
+                <li class="page-item" [class.disabled]="pageNumber === 1">
+                  <a class="page-link" (click)="onPageChange(pageNumber - 1)" aria-label="Previous">
+                    &laquo; Previous
+                  </a>
+                </li>
+                <li class="page-item" [class.active]="page === pageNumber" *ngFor="let page of getPageNumbers()">
+                  <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+                </li>
+                <li class="page-item" [class.disabled]="pageNumber === getValue()">
+                  <a class="page-link" (click)="onPageChange(pageNumber + 1)" aria-label="Next">
+                    Next &raquo;
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-1">
+            <select class="form-select" [(ngModel)]="pageSize" (change)="onSearch()">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
