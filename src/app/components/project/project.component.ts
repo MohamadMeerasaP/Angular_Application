@@ -4,11 +4,13 @@ import { IProject } from '../../model/interface/master';
 import { MasterService } from '../../services/master.service';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
+import { FilterPipe } from '../../filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink,CommonModule,FilterPipe,FormsModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
@@ -17,7 +19,8 @@ export class ProjectComponent  implements OnInit{
   projectList: IProject[] =[];
   masterSrv = inject(MasterService)
   private messageService = inject(MessageService);
-  router = inject(Router)
+  router = inject(Router);
+  searchText: any;
 
   ngOnInit(): void {
     this.getProjects();

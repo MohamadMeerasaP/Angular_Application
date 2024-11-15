@@ -7,8 +7,13 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 text-end">
-                        <button class="btn btn-success" (click)="addNew()">Add New</button>
+                        <div class="col-12 d-flex justify-content-end align-items-center">
+                            <div class="form-outline me-2">
+                                <input type="search" [(ngModel)]="searchText" class="form-control" placeholder="Search" aria-label="search"/>
+                              </div>
+                        <button class="btn btn-success mr-2" (click)="addNew()">Add New</button>
+                        <button class="btn btn-secondary" routerLink="/bulk-department">Bulk Edit</button>
+
                         </div>
                     </div>
                     <table class="table table-hover table-striped table-bordered text-center align-middle">
@@ -21,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of departmentList; let i = index">
+                            <tr *ngFor="let item of departmentList | filter: searchText; let i = index">
                                 <td>{{ i + 1 }}</td>
 
                                 <td>

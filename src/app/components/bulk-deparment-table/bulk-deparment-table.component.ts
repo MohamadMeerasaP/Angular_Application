@@ -4,11 +4,12 @@ import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FilterPipe } from '../../filter.pipe';
 
 @Component({
   selector: 'app-bulk-deparment-table',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,FilterPipe],
   templateUrl: './bulk-deparment-table.component.html',
   styleUrl: './bulk-deparment-table.component.css'
 })
@@ -17,6 +18,7 @@ export class BulkDeparmentTableComponent {
   departmentList: Department[] = [];
   oldObj: Department = { departmentId: 0, departmentName: '', departmentLogo: '', isEdit: false };
   private messageService = inject(MessageService);
+  searchText: any;
 
   constructor(private http: HttpClient) {}
 

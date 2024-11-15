@@ -8,7 +8,10 @@
                     <div class="col-6">
                         <h2>Projects</h2>
                     </div>
-                    <div class="col-6 text-end">
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                        <div class="form-outline me-2">
+                            <input type="search" [(ngModel)]="searchText" class="form-control" placeholder="Search" aria-label="search"/>
+                          </div>
                         <button class="btn btn-success" routerLink="/new-project/0">New Project</button>
                     </div>
                 </div>
@@ -26,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <ng-container *ngFor="let item of projectList; let i = index">
+                        <ng-container *ngFor="let item of projectList | filter:searchText; let i = index">
                             <tr>
                                 <td>{{ i + 1 }}</td>
                                 <td>{{ item.projectName }}</td>

@@ -2,16 +2,17 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { IProject, IProjectEmployee } from '../../model/interface/master';
 import { RouterLink } from '@angular/router';
 import { MasterService } from '../../services/master.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Employee } from '../../model/class/Employee';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
+import { FilterPipe } from '../../filter.pipe';
 
 @Component({
   selector: 'app-project-employee',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule,AsyncPipe,CommonModule],
+  imports: [RouterLink, ReactiveFormsModule,AsyncPipe,CommonModule,FilterPipe,FormsModule],
   templateUrl: './project-employee.component.html',
   styleUrls: ['./project-employee.component.css']  // Corrected property name
 })
@@ -24,6 +25,7 @@ export class ProjectEmployeeComponent implements OnInit {
   form : FormGroup = new FormGroup({})
   projectList$ : Observable<IProject[]> = new Observable<IProject[]>;
   empList$ : Observable<Employee[]> = new Observable<Employee[]>;
+  searchText: any;
 
 
   constructor(){

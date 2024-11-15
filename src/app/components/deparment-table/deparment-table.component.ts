@@ -4,11 +4,13 @@ import { Department } from '../../model/interface/master';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { FilterPipe } from '../../filter.pipe';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-deparment-table',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule, FilterPipe, RouterLink],
   templateUrl: './deparment-table.component.html',
   styleUrl: './deparment-table.component.css'
 })
@@ -17,6 +19,8 @@ export class DeparmentTableComponent implements OnInit {
   departmentList: Department [] = [];
   oldObj: Department = { departmentId: 0, departmentName: '', departmentLogo: '', isEdit: false }; // Default values
   private messageService = inject(MessageService);
+  searchText : any;
+  router = inject(Router);
 
 
   constructor(private http: HttpClient){ }

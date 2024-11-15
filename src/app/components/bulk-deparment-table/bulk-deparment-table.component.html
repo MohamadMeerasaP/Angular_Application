@@ -7,7 +7,10 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 text-end">
+                        <div class="col-12 d-flex justify-content-end align-items-center">
+                            <div class="form-outline me-2">
+                                <input type="search" [(ngModel)]="searchText" class="form-control" placeholder="Search" aria-label="search"/>
+                              </div>
                           <button class="btn btn-success mr-2" (click)="addNew()">Add New</button>
                           <button class="btn btn-primary" *ngIf="!isEdit()" (click)="onEdit()">Edit</button>
                           <button class="btn btn-warning mr-2" *ngIf="isEdit()" (click)="bulkUpdate()">Bulk Update</button>
@@ -24,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of departmentList; let i = index">
+                            <tr *ngFor="let item of departmentList | filter: searchText; let i = index">
                                 <td>{{ i + 1 }}</td>
                                 <td>
                                     <div *ngIf="isEdit()">

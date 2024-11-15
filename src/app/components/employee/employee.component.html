@@ -8,9 +8,17 @@
                     <div class="col-6">
                         <h2>Employees</h2>
                     </div>
-                    <div class="col-6 text-end">
-                        <button class="btn btn-success" (click)="isFormVisible.set(true)"> Add New Employee</button>
-                    </div>
+                    <!-- <div class="col-4">
+                        <div class="form-outline text-end">
+                            <input type="search" [(ngModel)]="searchText" class="form-control" placeholder="Search" aria-label="search"/>
+                        </div>
+                    </div> -->
+                    <div class="col-6 d-flex justify-content-end align-items-center">
+                        <div class="form-outline me-2">
+                          <input type="search" [(ngModel)]="searchText" class="form-control" placeholder="Search" aria-label="search"/>
+                        </div>
+                        <button class="btn btn-success" (click)="isFormVisible.set(true)">Add New Employee</button>
+                      </div>
                 </div>
             </div>
             <div class="card-body">
@@ -97,10 +105,9 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let item of employeeList(); let i = index">
-                <tr>
+                <tr *ngFor="let item of (employeeList() |filter:searchText); let i = index">
                     <td>{{ i + 1 }}</td>
-                    <td>{{ item.employeeName }}</td>
+                    <td>{{ item.employeeName}}</td>
                     <td>{{ item.contactNo }}</td>
                     <td>{{ item.emailId }}</td>
                     <td>{{ item.deptId }}</td>
@@ -114,7 +121,6 @@
                         </button>
                     </td>
                 </tr>
-            </ng-container>
         </tbody>
     </table>
 

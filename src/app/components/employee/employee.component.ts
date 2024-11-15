@@ -4,12 +4,13 @@ import { IApiResponse, IChildDept, IParentDept } from '../../model/interface/mas
 import { FormsModule } from '@angular/forms';
 import { Employee } from '../../model/class/Employee';
 import { MessageService } from 'primeng/api';
-import { CommonModule } from '@angular/common';
+import { CommonModule, UpperCasePipe } from '@angular/common';
+import { FilterPipe } from '../../filter.pipe';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,FilterPipe,UpperCasePipe],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
 })
@@ -23,6 +24,7 @@ export class EmployeeComponent implements OnInit{
   childDeptList = signal<IChildDept[]> ([]);
   parentDeptId: number = 0;
   employeeObj: Employee = new Employee();
+  searchText: any;
 
   ngOnInit(): void {
     this.getParentDept();
